@@ -1,0 +1,79 @@
+<div class="container">
+  <fieldset class="xd">
+    <legend style="color:white; text-align:center">Create New Account</legend><br>
+    <form name='regForm' novalidate>
+
+      <input type="text" class="form-control" name="firstName" placeholder="Enter FirstName"
+        ng-model="signupCtrl.user.firstName"
+        required
+        minlength="4"
+        ng-maxlength="10">
+        <span
+          ng-if="regForm.firstName.$error.minlength">
+          Use at least 4 characters
+        </span>
+        <span ng-if="regForm.firstName.$error.maxlength">
+          maximum characters exceeded (10)
+        </span>
+        <span ng-if="regForm.firstName.$touched && regForm.firstName.$error.required">
+          First Name can't be blank
+        </span>
+        <br><br>
+
+
+        <input type="text" class="form-control" name="lastName" placeholder="Enter LastName"
+          ng-model="signupCtrl.user.lastName"
+          required
+          minlength="4"
+          ng-maxlength="10">
+          <span
+            ng-if="regForm.lastName.$error.minlength">
+            Use at least 4 characters
+          </span>
+          <span ng-if="regForm.lastName.$error.maxlength">
+            maximum characters exceeded (10)
+          </span>
+          <span ng-if="regForm.lastName.$touched && regForm.lastName.$error.required">
+             Last Name can't be blank
+          </span>
+          <br><br>
+
+      <input type="email" class="form-control" name="email" placeholder="Email"
+        ng-model="signupCtrl.user.email"
+        required>
+        <span ng-if="regForm.email.$touched && regForm.email.$invalid">
+          Must be a valid email address: handle@domain format
+        </span>
+        <span ng-if="regForm.email.$touched && regForm.email.$error.required">
+          Email can't be blank
+        </span>
+        <br><br>
+
+      <input type="text" class="form-control" name="MobileNo" placeholder="Phone ###-###-####"
+        ng-model="signupCtrl.user.MobileNo"
+        pattern="(\d{3})-(\d{3})-(\d{4})"
+        required>
+        <span ng-if="regForm.MobileNo.$error.required && regForm.MobileNo.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+        <br><br>
+
+      <input type="text" class="form-control" name="favouriteItem" placeholder="ShortName Here"
+        ng-model="signupCtrl.user.favouriteItem"
+        required>
+        <span ng-if="regForm.favouriteItem.$error.required && regForm.favouriteItem.$touched">
+          Enter ShortName Of Your Favorite Item
+        </span>
+        <br><br>
+
+      <button type="submit"
+              class="button"
+              ng-disabled="regForm.$invalid"
+              ng-click="signupCtrl.submit()"><span>Submit</span></button>
+        <div class="confirmationMessage" ng-if="regForm.$valid">Your information has been saved</div>
+        <!-- <div style="margin-top: 10px;">
+          Form valid? {{ regForm.$valid }}
+        </div> -->
+    </form>
+  </fieldset>
+</div>
